@@ -3,8 +3,15 @@ import time
 import subprocess
 import sys
 from playwright.sync_api import sync_playwright
+from pathlib import Path # Añadimos pathlib
 
 def test_testeabilidad():
+    # --- ENCONTRAR LA RAÍZ DEL PROYECTO ---
+    # Sube 3 niveles: test_testeabilidad.py -> sistemas -> test -> raíz
+    root_dir = Path(__file__).resolve().parent.parent.parent 
+    os.chdir(root_dir) # Nos ubicamos en la raíz para hallar manage.py, .env y el .json
+    # --------------------------------------
+
     env_path = ".env"
     db_temporal = "db_test_automatizado.sqlite3"
     fixture_file = "datos_iniciales.json"

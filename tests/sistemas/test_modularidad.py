@@ -4,8 +4,15 @@ import subprocess
 import sys
 import urllib.request
 from urllib.error import HTTPError
+from pathlib import Path # Añadimos pathlib
 
 def test_modularidad_feature_flag():
+    # --- ENCONTRAR LA RAÍZ DEL PROYECTO ---
+    # Sube 3 niveles: test_modularidad.py -> sistemas -> test -> raíz
+    root_dir = Path(__file__).resolve().parent.parent.parent 
+    os.chdir(root_dir) # Nos ubicamos en la raíz para hallar manage.py y .env
+    # --------------------------------------
+
     env_path = ".env"
     puerto = 8005
 

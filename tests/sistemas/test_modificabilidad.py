@@ -3,8 +3,15 @@ import time
 import subprocess
 import sys
 import urllib.request
+from pathlib import Path
 
 def test_modificabilidad_db():
+    # --- ENCONTRAR LA RAÍZ DEL PROYECTO ---
+    # Sube 3 niveles: test_modificabilidad.py -> sistemas -> tests -> raíz
+    root_dir = Path(__file__).resolve().parent.parent.parent 
+    os.chdir(root_dir) # Nos movemos a la raíz para que manage.py y .env se encuentren fácil
+    # --------------------------------------
+
     env_path = ".env"
     db_temporal = "db_prueba_mantenimiento.sqlite3"
     
