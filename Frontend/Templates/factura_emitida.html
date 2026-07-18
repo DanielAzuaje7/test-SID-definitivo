@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura Creada</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+    <style>
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+</style>
+</head>
+
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'ordenes-dashboard' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+    <div class="main-content">
+        <h1>¡Factura Emitida exitosamente!</h1>
+        <div class="options-grid">
+            <div class="option-card">
+                <h3>Descargar Factura </h3>
+                <a href="{% url 'descargar-factura-pdf' factura.id %}" class="btn">Descargar factura PDF</a>
+            </div>
+            <div class="option-card">
+                <h3>Volver al tablero de factura </h3>
+                <a href="{% url 'factura-dashboard' %}" class="btn">Volver a facturas</a>
+            </div>
+            <div class="option-card">
+                <h3>Volver al tablero principal</h3>
+                <a href="{% url 'dashboard' %}" class="btn">Volver a home</a>
+            </div>
+    </div>
+    
+</body>
+</html>

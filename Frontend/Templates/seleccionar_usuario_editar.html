@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Usuario a Editar</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+</head>
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'ordenes-dashboard' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+
+    <div class="main-content">
+        <h2>Selecciona un usuario para editar</h2>
+        <ul>
+            {% for usuario in usuarios %}
+                <li>
+                
+                    <a href="{% url 'gestionar-usuario' usuario.id %}">{{ usuario.username }} ({{ usuario.first_name }} {{ usuario.last_name }})</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

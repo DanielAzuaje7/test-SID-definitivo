@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="main-content">
+        <h1>Gestionar Notas</h1>
+        <div class="options-grid">
+            <div class="option-card">
+                <h3>Notas de Débito</h3>
+                <p>Visualiza y gestiona tus notas de débito</p>
+                <a href="{% url 'nota_debito' %}" class="btn">Notas de Débito</a>
+                <a href="{% url 'notas-debito-emitidas' %}" class="btn btn-success">Ver Notas de Débito Emitidas</a>
+            </div>
+            <div class="option-card">
+                <h3>Notas de Crédito</h3>
+                <p>Visualiza y gestiona tus notas de crédito</p>
+                <a href="{% url 'nota_credito' %}" class="btn">Notas de Crédito</a>
+                <a href="{% url 'notas-credito-emitidas' %}" class="btn btn-success">Ver Notas de Crédito Emitidas</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

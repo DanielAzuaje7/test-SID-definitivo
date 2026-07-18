@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Confirmar emisión de Orden de Entrega</h2>
+<p>¿Está seguro que desea emitir la orden <strong>{{ orden.numero_orden_entrega }}</strong>? Una vez emitida no podrá ser modificada ni eliminada.</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-warning">Sí, emitir</button>
+    <a href="{% url 'orden_entrega' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

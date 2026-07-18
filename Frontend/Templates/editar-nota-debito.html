@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<a class="btn" href="{% url 'nota_debito' %}">Volver a Notas de Débito</a> 
+<h1>Detalles de la Nota de Débito {{ nota_debito.numero_nota }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="numero_nota">Número de Nota de Débito:</label>
+    <input type="text" id="numero_nota" value="{{ nota_debito.numero_nota }}" readonly>
+    {{ form.as_p }}
+
+    <h3>Conceptos de Débito</h3>
+    <div id="formset">
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="concepto-form">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" id="add-concepto">Añadir otro concepto</button>
+    <button type="submit">Guardar Cambios</button>
+</form>
+
+{% if not nota_debito.emitida %}
+    <form method="post" style="display:inline;" onsubmit="return confirm('¿Está seguro que desea emitir esta nota? Una vez emitida no podrá ser modificada.');">
+        {% csrf_token %}
+        <button type="submit" name="emitir" value="1">Emitir Nota</button>
+    </form>
+{% else %}
+    <span class="badge badge-success">Emitida</span>
+{% endif %}
+
+<script>
+    document.getElementById('add-concepto').onclick = function() {
+        var formsetDiv = document.getElementById('formset');
+        var totalForms = document.querySelector('[name$="-TOTAL_FORMS"]');
+        var currentFormCount = parseInt(totalForms.value);
+        var emptyFormHtml = `{{ formset.empty_form.as_p|escapejs }}`;
+        var newFormHtml = emptyFormHtml.replace(/__prefix__/g, currentFormCount);
+        var div = document.createElement('div');
+        div.classList.add('concepto-form');
+        div.innerHTML = newFormHtml;
+        formsetDiv.appendChild(div);
+        totalForms.value = currentFormCount + 1;
+    };
+</script>
+{% endblock %}
+

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factura creada</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+</head>
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'orden_entrega' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+
+
+    <h1 style="text-align: center; margin-top: 40px;">¡Usuario creado exitosamente!</h1>
+
+    <div class="options-grid">
+            <div class="option-card">
+                <h3>Volver al tablero de usuario </h3>
+                <a href="{% url 'usuario-dashboard' %}" class="btn">Volver a usuarios</a>
+            </div>
+            <div class="option-card">
+                <h3>Volver al tablero principal</h3>
+                <a href="{% url 'dashboard' %}" class="btn">Volver a home</a>
+            </div>
+            <div class="option-card">
+                <h3>Crear otro usuario</h3>
+                <a href="{% url 'crear-usuario' %}" class="btn">Volver a crear usuario</a>
+            </div>
+        </div>
+</body>
+</html>

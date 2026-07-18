@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main-content">
+    <h1>Gestionar Órdenes de Entrega</h1>
+    <div class="options-grid">
+        <div class="option-card">
+            <h3>Órdenes de Entrega</h3>
+            <p>Visualiza y gestiona tus órdenes de entrega no emitidas</p>
+            <a href="{% url 'orden_entrega' %}" class="btn">Órdenes No Emitidas</a>
+            <a href="{% url 'ordenes_emitidas' %}" class="btn btn-success">Órdenes Emitidas</a>
+        </div>
+    </div>
+    <a class="btn" href="{% url 'dashboard' %}">Volver al Dashboard</a>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Orden de Entrega PDF</title>
+</head>
+<body>
+    <h2>Orden de Entrega {{ orden.numero_orden_entrega }}</h2>
+    <p>Fecha: {{ orden.fecha_emision }}</p>
+    <p>Cliente: {{ orden.nombre_cliente }}</p>
+    <p>Factura Afectada: {{ orden.factura_afectada }}</p>
+    <p>Subtotal: {{ orden.subtotal }}</p>
+    <p>IVA: {{ orden.iva }}</p>
+    <p>Total: {{ orden.total }}</p>
+    <p>Observaciones: {{ orden.observaciones }}</p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Facturas</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+</head>
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'ordenes-dashboard' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+    <div class="main-content">
+        <h1>Gestionar facturas</h1>
+        <div class="options-grid">
+            <div class="option-card">
+                <h3>Crear Factura</h3>
+                <p>Crea nuevas facturas para enviarlas a tus clientes</p>
+                <a href="{% url 'crear-factura' %}" class="btn">Crear Factura</a>
+            </div>
+            <div class="option-card">
+                <h3>Gestionar Facturas</h3>
+                <p>Edita, elimina, revisa y/o emite facturas que no hayan sido emitidas</p>
+                <a href="{% url 'seleccionar-factura' %}" class="btn">Ir a Facturas</a>
+            </div>
+            <div class="option-card">
+                <h3>Ver Facturas Emitidas</h3>
+                <p>Ve o descarga facturas que ya se emitieron</p>
+                <a href="{% url 'seleccionar-factura-emitida' %}" class="btn">Ir a Facturas Emitidas</a>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

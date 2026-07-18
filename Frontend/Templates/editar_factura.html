@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+</head>
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'ordenes-dashboard' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+
+    <div class="main-content">
+        <h2>Editar Factura #{{ factura.numero_factura }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</body>
+</html>

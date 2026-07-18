@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura Creada</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+    <style>
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+</style>
+</head>
+
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'orden_entrega' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+    <div class="main-content">
+        <h1>Gestionar Factura</h1>
+        <div class="options-grid">
+            <div class="option-card">
+                <h3>Editar Usuario</h3>
+                <a href="{% url 'editar-usuario' user.id %}" class="btn">Ir a editar</a>
+            </div>
+            <div class="option-card">
+                <h3>Borrar Usuario</h3>
+                <a href="{% url 'confirmar-borrar-usuario' user.id %}" class="btn">Ir a borrar</a>
+            </div>
+            <div class="option-card">
+                <h3>Vovler a la lista de usuarios</h3>
+                <a href="{% url 'seleccionar-usuario' %}" class="btn">Volver a sus usuarios</a>
+            </div>
+    </div>
+        <h2>Usuario: #{{ user.username }}</h2>
+        <ul>
+            <li><strong>Nombre:</strong> {{ user.first_name }}</li>
+            <li><strong>Apellido:</strong> {{ user.last_name }}</li>
+            <li><strong>Correo Electronico:</strong> {{ user.email }}</li>
+            <li><strong>Estatus:</strong>
+                {% if user.is_admin or user.is_superuser %}
+                    Administrador/a
+                {% else %}
+                    Empleado/a
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>

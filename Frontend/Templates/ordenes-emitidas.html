@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Órdenes de Entrega Emitidas</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for orden in ordenes %}
+        <tr>
+            <td>{{ orden.numero_orden_entrega }}</td>
+            <td>{{ orden.fecha_emision }}</td>
+            <td>{{ orden.nombre_cliente }}</td>
+            <td>
+                <form method="get" action="{% url 'consultar_orden_entrega' orden.id %}" style="display:inline;">
+                    <button type="submit" class="btn btn-info btn-sm">Consultar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn" href="{% url 'dashboard' %}">Volver al Dashboard</a>
+{% endblock %}

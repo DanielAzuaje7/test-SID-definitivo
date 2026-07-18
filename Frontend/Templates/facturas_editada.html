@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura Editada</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+    <style>
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+</style>
+</head>
+
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'ordenes-dashboard' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+
+    <div class="main-content">
+        <h1>¡Factura editada exitosamente!</h1>
+        <div class="options-grid">
+            <div class="option-card">
+                <h3>Volver al tablero de factura </h3>
+                <a href="{% url 'factura-dashboard' %}" class="btn">Volver a facturas</a>
+            </div>
+            <div class="option-card">
+                <h3>Volver al tablero principal</h3>
+                <a href="{% url 'dashboard' %}" class="btn">Volver a home</a>
+            </div>
+            <div class="option-card">
+                <h3>Editar otra factura</h3>
+                <a href="{% url 'seleccionar-factura' %}" class="btn">Volver a lista de factura</a>
+            </div>
+    
+    </div>
+        <h2>Factura #{{ factura.numero_factura|default:factura.id }}</h2>
+        <ul>
+            <li><strong>Cliente:</strong> {{ factura.nombre_cliente }}</li>
+            <li><strong>Lugar de Emisión:</strong> {{ factura.lugar_emision }}</li>
+            <li><strong>Fecha de Emisión:</strong> {{ factura.fecha_emision }}</li>
+            <li><strong>Teléfono:</strong> {{ factura.telefono_cliente }}</li>
+            <li><strong>Cédula/RIF:</strong> {{ factura.cedula_cliente }}</li>
+        </ul>
+        <h3>Productos</h3>
+        <table border="1" style="margin: 0 auto;">
+            <tr>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+            </tr>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>{{ producto.precio_unitario }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No hay productos</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h3>Totales</h3>
+        <ul>
+            <li><strong>Subtotal:</strong> {{ factura.subtotal }}</li>
+            <li><strong>IVA:</strong> {{ factura.iva }}</li>
+            <li><strong>Total:</strong> {{ factura.total }}</li>
+        </ul>
+    </div>
+    
+</body>
+</html>

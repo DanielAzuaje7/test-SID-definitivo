@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Usuario a Editar</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'ordenes-dashboard' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+    <div class="main-content">
+        <h2>Seleccionar Factura Emitida</h2>
+        <ul>
+            {% for factura in facturas %}
+                <li>
+                    <a href="{% url 'ver-factura-emitida' factura.id %}">
+                        {{ factura.numero_factura|default:factura.id }} - {{ factura.nombre_cliente }}
+                    </a>
+                </li>
+            {% empty %}
+                <li>No tienes facturas creadas.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

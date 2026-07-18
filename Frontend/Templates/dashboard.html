@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Imprenta Digital</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+</head>
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'ordenes-dashboard' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+
+    <div class="main-content">
+        <p class="welcome-message">¡Bienvenido, {{ username }}!</p>
+
+        <div class="options-grid">
+            <div class="option-card">
+                <h3>Facturas</h3>
+                <p>Gestiona las facturas de tus clientes.</p>
+                <a href="{% url 'factura-dashboard' %}" class="btn">Ir a Facturas</a>
+            </div>
+
+            <div class="option-card">
+                <h3>Notas de C/D</h3>
+                <p>Crea y edita notas de crédito y débito.</p>
+                <a href="{% url 'notas-dashboard' %}" class="btn">Ir a Notas</a>
+            </div>
+
+            <div class="option-card">
+                <h3>Ordenes de Entrega</h3>
+                <p>Administra las órdenes de entrega de tus trabajos.</p>
+                <a href="{% url 'ordenes-dashboard' %}" class="btn">Ir a Órdenes</a>
+            </div>
+
+            {% if is_admin %}
+            <div class="option-card">
+                <h3>Gestion de Usuarios</h3>
+                <p>Administra los usuarios </p>
+                <a href="{% url 'usuario-dashboard' %}" class="btn">Ir a Usuarios</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

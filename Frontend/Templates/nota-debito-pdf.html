@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nota de Débito PDF</title>
+</head>
+<body>
+    <h2>Nota de Débito {{ nota.numero_nota }}</h2>
+    <p>Fecha: {{ nota.fecha_emision }}</p>
+    <p>Cliente: {{ nota.nombre_cliente }}</p>
+    <p>Factura Afectada: {{ nota.factura_afectada }}</p>
+    <p>Subtotal: {{ nota.subtotal }}</p>
+    <p>IVA: {{ nota.iva }}</p>
+    <p>Total: {{ nota.total }}</p>
+    <p>Observaciones: {{ nota.observaciones }}</p>
+</body>
+</html>

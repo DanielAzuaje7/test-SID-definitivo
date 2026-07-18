@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Notas de Débito Emitidas de {{ usuario }}</h1>
+{% if notas_emitidas %}
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Fecha</th>
+                <th>Monto total</th>
+                <th>Factura Afectada</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nota in notas_emitidas %}
+            <tr>
+                <td>{{ nota.numero_nota }}</td>
+                <td>{{ nota.fecha_emision }}</td>
+                <td>{{ nota.total }}</td>
+                <td>{{ nota.factura_afectada }}</td>
+                <td>
+                    <form method="get" action="{% url 'consultar-nota-debito' nota.id %}" style="display:inline;">
+                        <button type="submit" class="btn btn-info btn-sm">Consultar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay notas de débito emitidas.</p>
+{% endif %}
+<a class="btn" href="{% url 'notas-dashboard' %}">Volver al Dashboard</a>
+{% endblock %}

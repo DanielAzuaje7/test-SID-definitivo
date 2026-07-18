@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Detalles de la Nota de Crédito</h2>
+<ul>
+    <li><strong>Número:</strong> {{ nota.numero_nota }}</li>
+    <li><strong>Fecha:</strong> {{ nota.fecha_emision }}</li>
+    <li><strong>Cliente:</strong> {{ nota.nombre_cliente }}</li>
+    <li><strong>Factura Afectada:</strong> {{ nota.factura_afectada }}</li>
+    <li><strong>Subtotal:</strong> {{ nota.subtotal }}</li>
+    <li><strong>IVA:</strong> {{ nota.iva }}</li>
+    <li><strong>Total:</strong> {{ nota.total }}</li>
+    <li><strong>Observaciones:</strong> {{ nota.observaciones }}</li>
+    <li><strong>Estado:</strong> {% if nota.emitida %}<span class="badge badge-success">Emitida</span>{% else %}No emitida{% endif %}</li>
+</ul>
+{% if nota.emitida %}
+    <a href="{% url 'descargar-nota-credito-pdf' nota.id %}" class="btn btn-success">Descargar PDF</a>
+{% endif %}
+<a href="{% url 'nota_credito' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}

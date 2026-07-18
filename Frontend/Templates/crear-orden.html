@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<a class=btn href="{% url 'orden_entrega' %}">Volver a Órdenes de Entrega</a>
+<h1>Crear Orden de Entrega</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="numero_orden_entrega">Número de Orden de Entrega:</label>
+    <input type="text" id="numero_orden_entrega" value="{{ orden.numero_orden_entrega|default:'(Se generará automáticamente)' }}" readonly>
+    {{ form.as_p }}
+
+    <h3>Productos Entregados</h3>
+    <div id="formset">
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="producto-form">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" id="add-producto">Añadir otro producto</button>
+    <button type="submit">Crear Orden de Entrega</button>
+</form>
+<script>
+    document.getElementById('add-producto').onclick = function() {
+        var formsetDiv = document.getElementById('formset');
+        var totalForms = document.querySelector('[name$="-TOTAL_FORMS"]');
+        var currentFormCount = parseInt(totalForms.value);
+        var emptyFormHtml = `{{ formset.empty_form.as_p|escapejs }}`;
+        var newFormHtml = emptyFormHtml.replace(/__prefix__/g, currentFormCount);
+        var div = document.createElement('div');
+        div.classList.add('producto-form');
+        div.innerHTML = newFormHtml;
+        formsetDiv.appendChild(div);
+        totalForms.value = currentFormCount + 1;
+    };
+</script>
+{% endblock %}

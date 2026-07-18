@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Notas de Crédito de {{ usuario }}</h1>
+
+{% if notas_credito %}
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Fecha</th>
+                <th>Monto total</th>
+                <th>Factura Afectada</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nota in notas_credito %}
+                {% if not nota.emitida %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'editar-nota-credito' nota.id %}">
+                                {{ nota.numero_nota }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'editar-nota-credito' nota.id %}">
+                                {{ nota.fecha_emision }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'editar-nota-credito' nota.id %}">
+                                {{ nota.total }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'editar-nota-credito' nota.id %}">
+                                {{ nota.factura_afectada }}
+                            </a>
+                        </td>
+                        <td>
+                            {% if not nota.emitida %}
+                                <form method="get" action="{% url 'confirmar-emision-nota-credito' nota.id %}" style="display:inline;">
+                                    <button type="submit" class="btn btn-warning">Emitir</button>
+                                </form>
+                            {% else %}
+                                <span class="badge badge-success">Emitida</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'editar-nota-credito' nota.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            <form method="get" action="{% url 'consultar-nota-credito' nota.id %}" style="display:inline;">
+                                <button type="submit" class="btn btn-info btn-sm">Consultar</button>
+                            </form>
+                            <form method="get" action="{% url 'eliminar-nota-credito' nota.id %}" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay notas de crédito registradas.</p>
+{% endif %}
+<a class="btn" href="{% url 'crear-nota-credito' %}">Crear nueva nota de crédito</a>
+{% endblock %}

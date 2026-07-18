@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Factura</title>
+    <link rel="stylesheet" href="{% static 'styile.css' %}">
+    <style>
+        .form-row { margin-bottom: 10px; }
+        .producto-form { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Sistema de Imprenta Digital
+    </div>
+
+    <div class="nav-bar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'factura-dashboard' %}">Facturas</a>
+        <a href="{% url 'notas-dashboard' %}">Notas de C/D</a>
+        <a href="{% url 'ordenes-dashboard' %}">Ordenes de entrega</a>
+        <a href="{% url 'usuario-dashboard' %}">Usuarios</a>
+        <a href="{% url 'logout' %}" class="logout">Cerrar Sesión</a>
+    </div>
+    
+    <div class="main-content">
+        <h2>Crear Factura</h2>
+        <h3>Ingresar Datos de la factura:</h3>
+        <form method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Datos de la Factura</legend>
+                {{ factura_form.as_p }}
+            </fieldset>
+            <fieldset>
+                <legend>Productos</legend>
+                {{ formset.management_form }}
+                <div id="productos">
+                    {% for form in formset %}
+                        <div class="producto-form">
+                            {{ form.as_p }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="button" id="add-producto">Agregar otro producto</button>
+            </fieldset>
+            <button type="submit">Guardar Factura</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('add-producto').onclick = function() {
+            var productosDiv = document.getElementById('productos');
+            // Busca el input TOTAL_FORMS automáticamente
+            var totalFormsInput = productosDiv.parentNode.querySelector('input[name$="-TOTAL_FORMS"]');
+            var prefix = totalFormsInput.name.replace('-TOTAL_FORMS', '');
+            var currentFormCount = parseInt(totalFormsInput.value);
+
+            // Clona el primer formulario vacío
+            var emptyForm = productosDiv.children[0].cloneNode(true);
+
+            // Limpia los valores del nuevo formulario
+            Array.from(emptyForm.querySelectorAll('input')).forEach(function(input) {
+                if (input.type !== 'hidden' && input.name.indexOf('DELETE') === -1) {
+                    input.value = '';
+                }
+                if (input.type === 'checkbox') {
+                    input.checked = false;
+                }
+                // Cambia los atributos name y id con el nuevo índice
+                if (input.name) {
+                    input.name = input.name.replace(new RegExp(prefix + '-\\d+'), prefix + '-' + currentFormCount);
+                }
+                if (input.id) {
+                    input.id = input.id.replace(new RegExp(prefix + '-\\d+'), prefix + '-' + currentFormCount);
+                }
+            });
+
+            // Cambia los for de los labels
+            Array.from(emptyForm.querySelectorAll('label')).forEach(function(label) {
+                if (label.htmlFor) {
+                    label.htmlFor = label.htmlFor.replace(new RegExp(prefix + '-\\d+'), prefix + '-' + currentFormCount);
+                }
+            });
+
+            productosDiv.appendChild(emptyForm);
+            totalFormsInput.value = currentFormCount + 1;
+        };
+    </script>
+</body>
+</html>

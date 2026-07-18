@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Confirmar emisión de Nota de Débito</h2>
+<p>¿Está seguro que desea emitir la nota <strong>{{ nota.numero_nota }}</strong>? Una vez emitida no podrá ser modificada ni eliminada.</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-warning">Sí, emitir</button>
+    <a href="{% url 'nota_debito' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

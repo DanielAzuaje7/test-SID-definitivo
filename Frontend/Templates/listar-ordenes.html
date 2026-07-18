@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Órdenes de Entrega</h1>
+<a href="{% url 'crear_orden_entrega' %}" class="btn btn-success">Crear nueva orden</a>
+<table>
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for orden in ordenes %}
+        <tr>
+            <td>{{ orden.numero_orden_entrega }}</td>
+            <td>{{ orden.fecha_emision }}</td>
+            <td>{{ orden.nombre_cliente }}</td>
+            <td>
+                <a href="{% url 'editar_orden_entrega' orden.id %}" class="btn btn-primary btn-sm">Editar</a>
+                <form method="get" action="{% url 'consultar_orden_entrega' orden.id %}" style="display:inline;">
+                    <button type="submit" class="btn btn-info btn-sm">Consultar</button>
+                </form>
+                <form method="get" action="{% url 'confirmar_emision_orden_entrega' orden.id %}" style="display:inline;">
+                    <button type="submit" class="btn btn-warning btn-sm">Emitir</button>
+                </form>
+                <form method="get" action="{% url 'eliminar_orden_entrega' orden.id %}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn" href="{% url 'dashboard' %}">Volver al Dashboard</a>
+{% endblock %}
