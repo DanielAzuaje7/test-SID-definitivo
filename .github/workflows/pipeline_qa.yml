@@ -60,9 +60,7 @@ jobs:
       run: python tests/integracion/runner_iso25010.py
       
     - name: 8. Guardar Historial en GitHub
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add historico_grafana.json
-        git commit -m "📊 QA: Actualización automática de métricas [skip ci]" || echo "No hay cambios para commitear"
-        git push
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "📊 QA: Actualización automática de métricas [skip ci]"
+        file_pattern: 'historico_grafana.json'
