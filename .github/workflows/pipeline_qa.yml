@@ -25,28 +25,30 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libcairo2-dev pkg-config
 
-    - name: 3. Instalar dependencias
+    - name: 3. Instalar dependencias de Python
       run: |
         python -m pip install --upgrade pip
         pip install pytest pytest-json-report pylint radon
-        # Instalando desde la raíz del proyecto
         pip install -r requirements.txt 
 
     - name: 4. Ejecutar Pruebas Unitarias
       env:
-        DJANGO_SETTINGS_MODULE: "Backend.settings_sistema"
+        DJANGO_SETTINGS_MODULE: "imprenta_digital.settings"
+        PYTHONPATH: "."
       run: pytest tests/unitarias --json-report --json-report-file=reporte_unitarias.json
       continue-on-error: true
 
     - name: 5. Ejecutar Pruebas de Integración
       env:
-        DJANGO_SETTINGS_MODULE: "Backend.settings_sistema"
+        DJANGO_SETTINGS_MODULE: "imprenta_digital.settings"
+        PYTHONPATH: "."
       run: pytest tests/integracion --json-report --json-report-file=reporte_integracion.json
       continue-on-error: true
 
     - name: 6. Ejecutar Pruebas de Sistemas
       env:
-        DJANGO_SETTINGS_MODULE: "Backend.settings_sistema"
+        DJANGO_SETTINGS_MODULE: "imprenta_digital.settings_sistema"
+        PYTHONPATH: "."
       run: pytest tests/sistemas --json-report --json-report-file=reporte_sistemas.json
       continue-on-error: true
 
