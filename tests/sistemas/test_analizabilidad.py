@@ -6,10 +6,8 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 def test_analizabilidad_inteligente():
-    # 1. ESTANDARIZAR LA RUTA RAÍZ (Para evitar problemas si se ejecuta desde otra carpeta)
+    # 1. ESTANDARIZAR LA RUTA RAÍZ
     script_dir = Path(__file__).resolve().parent
-    # Asumo que el script está en tests/sistemas/, por lo que subimos 2 niveles
-    # Ajusta los ".parent" si tu estructura es distinta.
     project_root = script_dir.parent.parent 
     os.chdir(project_root)
 
@@ -26,13 +24,12 @@ def test_analizabilidad_inteligente():
         stderr=subprocess.PIPE
     )
     
-    # Damos 4 segundos para que el servidor arranque completamente
     time.sleep(4)
 
-    # 3. LÓGICA DE LA PRUEBA (Lo que ya tenías)
+    # 3. LÓGICA DE LA PRUEBA
     rutas_a_probar = [
         f"http://127.0.0.1:{puerto}/ruta-falsa-qa-{str(time.time()).replace('.', '')}/",
-        f"http://127.0.0.1:{puerto}/" # Ajusta si necesitas una ruta válida específica como /crear-factura/
+        f"http://127.0.0.1:{puerto}/" 
     ]
     
     try:
@@ -45,7 +42,6 @@ def test_analizabilidad_inteligente():
             for url in rutas_a_probar:
                 print(f"\n👉 Probando ruta: {url}")
                 
-                # Pesamos el log antes
                 peso_antes = os.path.getsize(log_path) if os.path.exists(log_path) else 0
                 
                 # CAPTURAMOS LA RESPUESTA HTTP DEL SERVIDOR
@@ -57,13 +53,9 @@ def test_analizabilidad_inteligente():
                     print(f"❌ Error al intentar conectar con la ruta: {e}")
                     continue
                 
-                # Esperamos un segundo por si el log tarda en escribir
                 time.sleep(1)
                 
-                # Pesamos el log después
                 peso_despues = os.path.getsize(log_path) if os.path.exists(log_path) else 0
-                
-                # Extraemos la parte relativa de la URL
                 path_relativo = url.split(puerto)[1]
                 
                 # VALIDACIÓN DINÁMICA BASADA EN EL CÓDIGO HTTP
@@ -76,9 +68,9 @@ def test_analizabilidad_inteligente():
                             if path_relativo in lo_nuevo and str(status_code) in lo_nuevo:
                                 print(f"✅ ÉXITO: El sistema atrapó el fallo y documentó el Error {status_code}.")
                             else:
-                                print(f"❌ FALLO: El log creció, pero no documentó correctamente el Error {status_code}.")
+                                assert False, f"FALLO: El log creció, pero no documentó correctamente el Error {status_code}."
                     else:
-                        print(f"❌ FALLO CRÍTICO: Hubo un Error {status_code} pero el sistema se quedó mudo (el log no creció).")
+                        assert False, f"FALLO CRÍTICO: Hubo un Error {status_code} pero el sistema se quedó mudo (el log no creció)."
                         
                 elif status_code == 200:
                     if peso_despues == peso_antes:
@@ -88,7 +80,7 @@ def test_analizabilidad_inteligente():
                             f.seek(peso_antes)
                             lo_nuevo = f.read()
                             if "WARNING" in lo_nuevo or "ERROR" in lo_nuevo:
-                                print(f"❌ FALLO: La ruta devolvió 200 OK, pero generó errores internos en el log.")
+                                assert False, "FALLO: La ruta devolvió 200 OK, pero generó errores internos en el log."
                             else:
                                 print(f"✅ ÉXITO: Tráfico limpio (200 OK). El log creció por procesos rutinarios, sin errores.")
 

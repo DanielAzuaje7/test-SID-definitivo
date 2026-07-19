@@ -90,7 +90,7 @@ def test_testeabilidad():
             print("🎉 ¡PRUEBA EXITOSA! El sistema recreó un ecosistema de pruebas autónomo.")
             print("📈 Diagnóstico: Nivel de Testeabilidad ALTO. Entorno aislado y datos inyectados.")
         else:
-            print("❌ FALLO: El sistema no logró aislarse ni levantar el entorno con los fixtures.")
+            assert False, "FALLO: El sistema no logró aislarse ni levantar el entorno con los fixtures."
 
     finally:
         # 6. DESMONTAJE Y LIMPIEZA GARANTIZADA

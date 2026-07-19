@@ -47,3 +47,264 @@ Traceback (most recent call last):
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'notas-dashboard' not found. 'notas-dashboard' is not a valid view function or pattern name.
 "GET /crear-factura/ HTTP/1.1" 500 138163
+Not Found: /ruta-falsa-qa-17844444408074064/
+"GET /ruta-falsa-qa-17844444408074064/ HTTP/1.1" 404 18391
+"GET / HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+Not Found: /notas/
+"GET /notas/ HTTP/1.1" 404 12702
+Internal Server Error: /crear-factura/
+Traceback (most recent call last):
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 145, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\Backend\facturas\controllers.py", line 16, in get
+    return render(request, self.plantilla_crear_factura, {
+        'factura_form': factura_form,
+        'formset': formset,
+    })
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'notas-dashboard' not found. 'notas-dashboard' is not a valid view function or pattern name.
+"GET /crear-factura/ HTTP/1.1" 500 138493
+"GET /login/ HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+Not Found: /ruta-falsa-qa-17844450988997438/
+"GET /ruta-falsa-qa-17844450988997438/ HTTP/1.1" 404 18391
+"GET / HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+Not Found: /notas/
+"GET /notas/ HTTP/1.1" 404 12702
+Internal Server Error: /crear-factura/
+Traceback (most recent call last):
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 145, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\Backend\facturas\controllers.py", line 16, in get
+    return render(request, self.plantilla_crear_factura, {
+        'factura_form': factura_form,
+        'formset': formset,
+    })
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'notas-dashboard' not found. 'notas-dashboard' is not a valid view function or pattern name.
+"GET /crear-factura/ HTTP/1.1" 500 138493
+"GET /login/ HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+Not Found: /ruta-falsa-qa-1784445143066514/
+"GET /ruta-falsa-qa-1784445143066514/ HTTP/1.1" 404 18388
+"GET / HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+Not Found: /notas/
+"GET /notas/ HTTP/1.1" 404 12702
+Internal Server Error: /crear-factura/
+Traceback (most recent call last):
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 145, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\Backend\facturas\controllers.py", line 16, in get
+    return render(request, self.plantilla_crear_factura, {
+        'factura_form': factura_form,
+        'formset': formset,
+    })
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'notas-dashboard' not found. 'notas-dashboard' is not a valid view function or pattern name.
+"GET /crear-factura/ HTTP/1.1" 500 138493
+"GET /login/ HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+Not Found: /ruta-falsa-qa-17844454894132082/
+"GET /ruta-falsa-qa-17844454894132082/ HTTP/1.1" 404 18391
+"GET / HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+"GET /crear-factura/ HTTP/1.1" 200 5701
+Not Found: /notas/
+"GET /notas/ HTTP/1.1" 404 12702
+Internal Server Error: /crear-factura/
+Traceback (most recent call last):
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 145, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\Backend\facturas\controllers.py", line 16, in get
+    return render(request, self.plantilla_crear_factura, {
+        'factura_form': factura_form,
+        'formset': formset,
+    })
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'notas-dashboard' not found. 'notas-dashboard' is not a valid view function or pattern name.
+"GET /crear-factura/ HTTP/1.1" 500 138493
+"GET /login/ HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+Not Found: /ruta-falsa-qa-17844458625037723/
+"GET /ruta-falsa-qa-17844458625037723/ HTTP/1.1" 404 18391
+"GET / HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918
+Not Found: /notas/
+"GET /notas/ HTTP/1.1" 404 12702
+Internal Server Error: /crear-factura/
+Traceback (most recent call last):
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\views\generic\base.py", line 145, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\Backend\facturas\controllers.py", line 16, in get
+    return render(request, self.plantilla_crear_factura, {
+        'factura_form': factura_form,
+        'formset': formset,
+    })
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\danie\Downloads\SQA\SID-main\SID-main\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'notas-dashboard' not found. 'notas-dashboard' is not a valid view function or pattern name.
+"GET /crear-factura/ HTTP/1.1" 500 138493
+"GET /login/ HTTP/1.1" 200 1194
+"GET /static/styile.css HTTP/1.1" 200 5918

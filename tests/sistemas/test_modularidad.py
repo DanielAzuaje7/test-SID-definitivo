@@ -15,7 +15,6 @@ def test_modularidad_feature_flag():
 
     print("--- INICIANDO AUDITORÍA MNT-SYS-04 (Modularidad y Aislamiento) ---")
 
-    # RESPALDO DEL .ENV ORIGINAL
     lineas_env_original = []
     if os.path.exists(env_path):
         with open(env_path, "r", encoding="utf-8") as f:
@@ -24,25 +23,26 @@ def test_modularidad_feature_flag():
     servidor = None
 
     try:
-        # 1. APAGAR EL MÓDULO DE NOTAS
         print("\n🚩 1. Apagando módulo de Notas vía Feature Flag...")
         with open(env_path, "w", encoding="utf-8") as f:
             for linea in lineas_env_original:
                 if not linea.startswith("ACTIVAR_NOTAS="):
                     f.write(linea)
-            # Aseguramos que el flag esté apagado
             f.write("ACTIVAR_NOTAS=False\n") 
 
-        # 2. LEVANTAR EL SERVIDOR CON --settings
+        # 🌟 EL ARREGLO: Forzamos la variable en la memoria del subproceso
+        env_subproceso = os.environ.copy()
+        env_subproceso["ACTIVAR_NOTAS"] = "False"
+
         print(f"⏳ 2. Levantando servidor en puerto {puerto}...")
         servidor = subprocess.Popen(
             [sys.executable, "manage.py", "runserver", str(puerto), "--settings=imprenta_digital.settings_sistema", "--noreload"],
             stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
+            stderr=subprocess.DEVNULL,
+            env=env_subproceso # <- PASAMOS EL ENTORNO
         )
         time.sleep(5) 
 
-        # 3. PRUEBA DE AISLAMIENTO
         print("\n📡 3. Evaluando módulo apagado (Notas)...")
         estado_notas = 0
         try:
@@ -53,7 +53,6 @@ def test_modularidad_feature_flag():
         except Exception as err:
             estado_notas = 500
 
-        # 4. PRUEBA DE SUPERVIVENCIA
         print("🛡️ 4. Evaluando supervivencia del sistema (Facturas)...")
         estado_facturas = 0
         try:
@@ -64,7 +63,6 @@ def test_modularidad_feature_flag():
         except Exception as err:
             estado_facturas = 500
 
-        # 5. VALIDACIÓN MATEMÁTICA
         print("\n🧠 Analizando resultados de Modularidad...")
         if estado_notas == 404 and estado_facturas < 400:
             print(f"🎉 ¡PRUEBA EXITOSA!")
@@ -72,12 +70,14 @@ def test_modularidad_feature_flag():
             print(f"   - Módulo Facturas: HTTP {estado_facturas} (Sobrevivió y está operativo)")
             print("📈 Diagnóstico: Nivel de Modularidad ALTO.")
         else:
-            print("❌ FALLO: El sistema colapsó o no aisló correctamente los módulos.")
-            print(f"   - Módulo Notas arrojó: HTTP {estado_notas}")
-            print(f"   - Módulo Facturas arrojó: HTTP {estado_facturas}")
+            error_msg = (
+                "FALLO: El sistema colapsó o no aisló correctamente los módulos.\n"
+                f"   - Módulo Notas arrojó: HTTP {estado_notas}\n"
+                f"   - Módulo Facturas arrojó: HTTP {estado_facturas}"
+            )
+            assert False, error_msg
 
     finally:
-        # 6. APAGAR Y RESTAURAR GARANTIZADO
         print("\n🔌 6. Apagando servidor y restaurando entorno...")
         if servidor and servidor.poll() is None:
             servidor.terminate()
