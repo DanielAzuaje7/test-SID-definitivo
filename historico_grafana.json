@@ -181,5 +181,34 @@
             "collected": 2
         },
         "pruebas_sistemas_detalles": []
+    },
+    {
+        "metadata": {
+            "timestamp": "2026-07-19T08:17:26.583683",
+            "proyecto": "SID - Imprenta Digital"
+        },
+        "mantenibilidad": {
+            "pylint_score": 3.8,
+            "radon_complejidad_alta": 0,
+            "archivos_con_print": 2
+        },
+        "pruebas_unitarias": {
+            "passed": 0,
+            "failed": 0,
+            "total": 0
+        },
+        "pruebas_unitarias_detalles": [],
+        "pruebas_integracion": {
+            "passed": 0,
+            "failed": 0,
+            "total": 0
+        },
+        "pruebas_integracion_detalles": [],
+        "pruebas_sistemas": {
+            "passed": 0,
+            "failed": 0,
+            "total": 0
+        },
+        "pruebas_sistemas_detalles": []
     }
 ]
