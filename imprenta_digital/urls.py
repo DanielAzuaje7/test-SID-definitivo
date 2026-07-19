@@ -3,7 +3,7 @@ URL configuration for imprenta_digital project.
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings # <-- Importamos los settings para leer el interruptor
+from django.conf import settings # <-- Importamos los settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,7 +21,8 @@ urlpatterns = [
     path('', include('Backend.orden_de_entrega.urls')), 
 ]
 
-# --- ESCUDO DE MODULARIDAD (MNT-SYS-04) ---
-# Solo acopla las rutas de las notas si el interruptor está activado en el .env
-if settings.MODULO_NOTAS_ACTIVO:
+# --- ESCUDO DE MODULARIDAD (Tolerante a fallos) ---
+# getattr busca la variable. Si el settings original no la tiene, asume True por defecto
+# y carga las rutas normalmente para el resto del equipo.
+if getattr(settings, 'MODULO_NOTAS_ACTIVO', True):
     urlpatterns.append(path('', include('Backend.notas_de_debito_credito.urls')))
