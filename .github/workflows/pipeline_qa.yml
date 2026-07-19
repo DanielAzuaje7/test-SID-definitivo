@@ -30,6 +30,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest pytest-json-report pylint radon
         pip install -r requirements.txt 
+        playwright install chromium  # <--- ESTO ES NUEVO (Descarga el navegador)
 
     - name: 4. Ejecutar Pruebas Unitarias
       env:
@@ -49,7 +50,9 @@ jobs:
       env:
         DJANGO_SETTINGS_MODULE: "imprenta_digital.settings_sistema"
         PYTHONPATH: "."
-      run: pytest tests/sistemas --json-report --json-report-file=reporte_sistemas.json
+      run: |
+        python manage.py migrate --settings=imprenta_digital.settings_sistema  # <--- ESTO ES NUEVO (Crea las tablas)
+        pytest tests/sistemas --json-report --json-report-file=reporte_sistemas.json
       continue-on-error: true
 
     - name: 7. Consolidar Métricas (Tu Script)
