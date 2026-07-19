@@ -155,5 +155,31 @@
                 "estado": "passed"
             }
         ]
+    },
+    {
+        "metadata": {
+            "timestamp": "2026-07-19T07:57:31.655839",
+            "proyecto": "SID - Imprenta Digital"
+        },
+        "mantenibilidad": {
+            "pylint_score": 0.0,
+            "radon_complejidad_alta": 0,
+            "archivos_con_print": 2
+        },
+        "pruebas_unitarias": {
+            "total": 0,
+            "collected": 0
+        },
+        "pruebas_unitarias_detalles": [],
+        "pruebas_integracion": {
+            "total": 0,
+            "collected": 0
+        },
+        "pruebas_integracion_detalles": [],
+        "pruebas_sistemas": {
+            "total": 0,
+            "collected": 2
+        },
+        "pruebas_sistemas_detalles": []
     }
 ]
