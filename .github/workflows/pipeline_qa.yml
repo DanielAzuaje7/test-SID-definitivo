@@ -20,7 +20,7 @@ jobs:
       with:
         python-version: '3.12'
 
-- name: 2.5. Instalar dependencias del sistema (Ubuntu)
+    - name: 2.5. Instalar dependencias del sistema (Ubuntu)
       run: |
         sudo apt-get update
         sudo apt-get install -y libcairo2-dev pkg-config
