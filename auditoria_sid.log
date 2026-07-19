@@ -1,10 +1,7 @@
 Not Found: /ruta-falsa-qa-17844182574238093/
 "GET /ruta-falsa-qa-17844182574238093/ HTTP/1.1" 404 18391
 "GET / HTTP/1.1" 200 1194
-"GET /static/styile.css HTTP/1.1" 200 5918
-"GET /login/ HTTP/1.1" 200 1194
-"GET /static/styile.css HTTP/1.1" 200 5918
-Not Found: /notas/
+"GET /static/styile.css HTTP/1.1" 200 5918Not Found: /notas/
 "GET /notas/ HTTP/1.1" 404 12702
 Internal Server Error: /crear-factura/
 Traceback (most recent call last):
