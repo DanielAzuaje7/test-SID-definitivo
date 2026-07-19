@@ -1,0 +1,54 @@
+name: QA Pipeline ISO 25010
+
+# Esto le dice al robot que despierte cada vez que hagas un "push" a la rama main
+on:
+  push:
+    branches: [ "main", "master" ]
+
+# Permiso necesario para que el bot pueda guardar el JSON en tu repositorio
+permissions:
+  contents: write
+
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest # El robot usará Linux
+
+    steps:
+    - name: 1. Clonar el repositorio
+      uses: actions/checkout@v4
+
+    - name: 2. Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10' # Puedes cambiarlo a tu versión
+
+    - name: 3. Instalar dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pytest-json-report pylint radon
+        # Si tienes un requirements.txt en tu Backend, quita el "#" de la siguiente línea:
+        # pip install -r Backend/requirements.txt
+
+    - name: 4. Ejecutar Pruebas Unitarias
+      run: pytest tests/unitarias --json-report --json-report-file=reporte_unitarias.json
+      continue-on-error: true
+
+    - name: 5. Ejecutar Pruebas de Integración
+      run: pytest tests/integracion --json-report --json-report-file=reporte_integracion.json
+      continue-on-error: true
+
+    - name: 6. Ejecutar Pruebas de Sistemas
+      run: pytest tests/sistemas --json-report --json-report-file=reporte_sistemas.json
+      continue-on-error: true
+
+    - name: 7. Consolidar Métricas (Tu Script)
+      run: python tests/integracion/runner_iso25010.py
+
+    - name: 8. Guardar Historial en GitHub
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add historico_grafana.json
+        # El [skip ci] evita que este commit automático vuelva a despertar al robot (loop infinito)
+        git commit -m "📊 QA: Actualización automática de métricas [skip ci]" || echo "No hay cambios para commitear"
+        git push
