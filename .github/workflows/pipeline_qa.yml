@@ -58,7 +58,7 @@ jobs:
         pytest tests/sistemas --json-report --json-report-file=reporte_sistemas.json
       continue-on-error: true
 
-      - name: 7. Sincronizar repositorio (Previene choques)
+    - name: 7. Sincronizar repositorio (Previene choques)
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
