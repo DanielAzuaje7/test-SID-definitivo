@@ -16,7 +16,7 @@ jobs:
     - name: 1. Clonar el repositorio
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Importante para que el pull funcione bien luego
+        fetch-depth: 0
 
     - name: 2. Configurar Python
       uses: actions/setup-python@v5
@@ -58,18 +58,16 @@ jobs:
         pytest tests/sistemas --json-report --json-report-file=reporte_sistemas.json
       continue-on-error: true
 
-    - name: 7. Consolidar Métricas (Tu Script)
-      run: python tests/integracion/runner_iso25010.py
-      
-    - name: 7.5 Sincronizar repositorio antes del commit (Previene error non-fast-forward)
+    - name: 7. Sincronizar repositorio (Previene choques)
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git stash
         git pull origin main --rebase
-        git stash pop || true
-        
-    - name: 8. Guardar Historial en GitHub
+
+    - name: 8. Consolidar Métricas (Tu Script)
+      run: python tests/integracion/runner_iso25010.py
+      
+    - name: 9. Guardar Historial en GitHub
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "📊 QA: Actualización automática de métricas [skip ci]"
