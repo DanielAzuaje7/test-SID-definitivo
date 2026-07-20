@@ -996,5 +996,163 @@
                 "estado": "passed"
             }
         ]
+    },
+    {
+        "metadata": {
+            "timestamp": "2026-07-20T00:41:00.419122",
+            "proyecto": "SID - Imprenta Digital"
+        },
+        "mantenibilidad": {
+            "pylint_score": 3.8,
+            "radon_complejidad_alta": 0,
+            "archivos_con_print": 2
+        },
+        "pruebas_unitarias": {
+            "failed": 5,
+            "passed": 20,
+            "total": 25,
+            "collected": 25
+        },
+        "pruebas_unitarias_detalles": [
+            {
+                "nombre": "test_UT_B0_01_un_producto_cantidad_1",
+                "estado": "failed"
+            },
+            {
+                "nombre": "test_UT_B0_02_varios_productos_cantidades_distintas",
+                "estado": "failed"
+            },
+            {
+                "nombre": "test_UT_B0_03_borde_precio_en_cero",
+                "estado": "failed"
+            },
+            {
+                "nombre": "test_UT_B0_04_borde_decimales_calcular_totales_no_redondea",
+                "estado": "failed"
+            },
+            {
+                "nombre": "test_UT_B0_05_contrato_regresion_iva_16_porciento",
+                "estado": "failed"
+            },
+            {
+                "nombre": "test_UT_B1_01_acepta_los_5_prefijos_validos_seniat",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B1_02_rechaza_cadena_sin_prefijo",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B1_03_borde_prefijo_en_minuscula",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B1_04_borde_cantidad_de_digitos_incorrecta",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B1_05_regresion_ambas_copias_siguen_siendo_identicas",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B2_01_mismo_subtotal_en_los_tres_modulos",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B2_02_borde_subtotal_en_cero",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B2_03_borde_decimales_consistentes_sin_redondear",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B3_01_correlativo_unico_entre_dos_facturas_seguidas",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B3_05_borde_numero_factura_forzado_no_se_valida",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B3_02_prefijo_nota_de_debito",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B3_03_prefijo_nota_de_credito",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B3_04_prefijo_orden_de_entrega",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B4_01_rechaza_fecha_futura",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B4_02_acepta_fecha_de_hoy",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B4_03_guardado_siempre_usa_la_fecha_actual",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B4_04_depende_del_reloj_del_sistema",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B5_01_nota_copia_datos_del_cliente",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B5_02_orden_de_entrega_copia_datos_del_cliente",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_UT_B5_03_borde_la_copia_no_se_actualiza_retroactivamente",
+                "estado": "passed"
+            }
+        ],
+        "pruebas_integracion": {
+            "passed": 2,
+            "total": 2,
+            "collected": 2
+        },
+        "pruebas_integracion_detalles": [
+            {
+                "nombre": "test_int_man_01_trazabilidad_logs",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_int_man_02_atomicidad_transacciones",
+                "estado": "passed"
+            }
+        ],
+        "pruebas_sistemas": {
+            "passed": 3,
+            "failed": 1,
+            "total": 4,
+            "collected": 4
+        },
+        "pruebas_sistemas_detalles": [
+            {
+                "nombre": "test_analizabilidad_inteligente",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_modificabilidad_db",
+                "estado": "passed"
+            },
+            {
+                "nombre": "test_modularidad_feature_flag",
+                "estado": "failed"
+            },
+            {
+                "nombre": "test_testeabilidad",
+                "estado": "passed"
+            }
+        ]
     }
 ]
