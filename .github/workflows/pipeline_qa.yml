@@ -58,11 +58,11 @@ jobs:
         pytest tests/sistemas --json-report --json-report-file=reporte_sistemas.json
       continue-on-error: true
 
-    - name: 7. Sincronizar repositorio (Previene choques)
+      - name: 7. Sincronizar repositorio (Previene choques)
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git pull origin main --rebase
+        git pull origin main --rebase --autostash
 
     - name: 8. Consolidar Métricas (Tu Script)
       run: python tests/integracion/runner_iso25010.py
